@@ -43,7 +43,7 @@ export default async function ProductsList() {
                 <th>Edit</th>
               </tr>
             </thead>
-            {products.map((p) => (
+            {products?.map((p) => (
               <tbody key={p._id}>
                 <tr>
                   <td>{p.name}</td>
