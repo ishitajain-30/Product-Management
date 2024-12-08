@@ -10,17 +10,21 @@ const getProducts = async () => {
     });
 
     if (!res.ok) {
-      throw new Error("Failed to fetch topics");
+      throw new Error("Failed to fetch products");
     }
 
-    return res.json();
+    const data = await res.json();
+    console.log("Fetched Products:", data);
+    return data;
   } catch (error) {
-    console.log("Error loading products: ", error);
+    console.error("Error loading products:", error);
+    return { products: [] };
   }
 };
 
 export default async function ProductsList() {
-  const { products } = await getProducts();
+  const data = await getProducts();
+  const products = data?.products || [];
   return (
     <main className="mainDes">
       <div className="productMainPage">
